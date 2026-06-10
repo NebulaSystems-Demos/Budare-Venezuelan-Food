@@ -4,32 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Budare Venezuelan Food · Málaga</title>
+  <link rel="icon" type="image/jpeg" href="Assets/Logo Budare.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --black:      #0A0806;
-      --black-2:    #110E0A;
-      --black-3:    #1A150F;
-      --white:      #FDF9F2;
-      --off-white:  #F0E8D8;
-      --gold:       #E8A518;
-      --gold-light: #F5C050;
-      --gold-dark:  #B3800E;
-      --gray-light: #BFB49F;
-      --gray:       #8A7E6E;
-      --gray-dark:  #3D3628;
-      --border:     rgba(232,165,24,.1);
-      --border-mid: rgba(232,165,24,.22);
+      --green:       #0F1A10;
+      --green-2:     #162316;
+      --green-3:     #1E2F1E;
+      --green-4:     #263526;
+      --green-light: #2D4A2D;
+      --gold:        #EFDFA0;
+      --gold-light:  #F5EFC0;
+      --gold-dark:   #C8B870;
+      --blue-gray:   #7B8FA6;
+      --white:       #FDF9F2;
+      --off-white:   #F0EBE0;
+      --gray-light:  #C0B89E;
+      --gray:        #8A826E;
+      --gray-dark:   #3D3828;
+      --border:      rgba(239,223,160,.12);
+      --border-mid:  rgba(239,223,160,.25);
+
       --font-serif: 'Playfair Display', Georgia, serif;
       --font-sans:  'Inter', system-ui, sans-serif;
       --radius: 12px;
-      --shadow-lg: 0 12px 48px rgba(0,0,0,.7);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,.6);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-sans); color: var(--white); background: var(--black); line-height: 1.6; overflow-x: hidden; }
+    body { font-family: var(--font-sans); color: var(--white); background: var(--green); line-height: 1.6; overflow-x: hidden; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
@@ -43,15 +48,14 @@
 
     /* NAV */
     #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background .3s, box-shadow .3s; }
-    #navbar.scrolled { background: rgba(10,8,6,.96); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(232,165,24,.12); }
+    #navbar.scrolled { background: rgba(15,26,16,.97); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(239,223,160,.15); }
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: flex; align-items: center; color: var(--white); }
-    .brand-name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; letter-spacing: .06em; color: var(--white); }
-    .brand-sub { display: block; font-size: .6rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
+    .brand { display: flex; align-items: center; }
+    .brand img { display: block; height: 48px; width: 48px; object-fit: cover; border-radius: 8px; }
     .nav-links { display: flex; align-items: center; gap: 4px; }
     .nav-links a { padding: 8px 14px; font-size: .85rem; font-weight: 500; color: var(--gray-light); border-radius: 6px; transition: color .2s, background .2s; }
-    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,.07); }
-    .nav-cta { background: var(--gold) !important; color: var(--black) !important; font-weight: 600 !important; padding: 9px 20px !important; border-radius: 8px !important; transition: background .2s, transform .2s !important; }
+    .nav-links a:hover { color: var(--white); background: rgba(239,223,160,.1); }
+    .nav-cta { background: var(--gold) !important; color: var(--green) !important; font-weight: 700 !important; padding: 9px 20px !important; border-radius: 8px !important; transition: background .2s, transform .2s !important; }
     .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
     .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
     .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
@@ -61,56 +65,56 @@
     .hero-bg { position: absolute; inset: 0; }
     .hero-bg img { transform: scale(1.04); animation: heroZoom 12s ease-out forwards; }
     @keyframes heroZoom { to { transform: scale(1); } }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(10,8,6,.88) 0%, rgba(10,8,6,.62) 50%, rgba(10,8,6,.85) 100%); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(15,26,16,.90) 0%, rgba(15,26,16,.65) 50%, rgba(15,26,16,.88) 100%); }
     .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 820px; animation: fadeUp .9s .2s both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
     .hero-eyebrow { font-size: .75rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
     h1 { display: flex; flex-direction: column; gap: 4px; margin-bottom: 24px; }
     .hero-title-thin { font-family: var(--font-serif); font-weight: 400; font-style: italic; font-size: clamp(1.4rem, 3vw, 2rem); color: var(--gray-light); }
-    .hero-title-bold { font-family: var(--font-serif); font-weight: 700; font-size: clamp(4rem, 10vw, 8rem); color: var(--white); letter-spacing: .03em; line-height: .95; }
-    .hero-sub { font-size: 1.1rem; color: rgba(200,190,165,.85); margin-bottom: 40px; line-height: 1.7; }
+    .hero-title-bold { font-family: var(--font-serif); font-weight: 700; font-size: clamp(4rem, 10vw, 8rem); color: var(--gold); letter-spacing: .03em; line-height: .95; }
+    .hero-sub { font-size: 1.1rem; color: rgba(192,184,158,.9); margin-bottom: 40px; line-height: 1.7; }
     .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 8px; font-size: .95rem; font-weight: 600; transition: all .2s; cursor: pointer; border: none; letter-spacing: .03em; }
-    .btn-primary { background: var(--gold); color: var(--black); }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,165,24,.3); }
-    .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.4); }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(232,165,24,.08); }
+    .btn-primary { background: var(--gold); color: var(--green); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,223,160,.35); }
+    .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.35); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(239,223,160,.08); }
     .btn-large { padding: 16px 40px; font-size: 1rem; }
-    .hero-rating { display: inline-flex; align-items: center; gap: 12px; padding: 10px 22px; background: rgba(232,165,24,.1); backdrop-filter: blur(8px); border: 1px solid rgba(232,165,24,.22); border-radius: 50px; color: var(--gray-light); font-size: .875rem; }
+    .hero-rating { display: inline-flex; align-items: center; gap: 12px; padding: 10px 22px; background: rgba(239,223,160,.1); backdrop-filter: blur(8px); border: 1px solid rgba(239,223,160,.25); border-radius: 50px; color: var(--gray-light); font-size: .875rem; }
     .stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
-    .scroll-down { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 2; color: var(--gold); opacity: .7; animation: bounce 2s infinite; }
+    .scroll-down { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 2; color: var(--gold); opacity: .6; animation: bounce 2s infinite; }
     .scroll-down svg { width: 32px; height: 32px; }
     @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
 
     /* SOBRE */
-    .sobre { background: var(--black-2); }
+    .sobre { background: var(--green-2); }
     .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .sobre-imgs { position: relative; }
     .sobre-img-main { border-radius: var(--radius); overflow: hidden; height: 500px; box-shadow: var(--shadow-lg); }
-    .sobre-img-float { position: absolute; bottom: -32px; right: -32px; width: 200px; height: 200px; border-radius: var(--radius); overflow: hidden; border: 4px solid var(--black-2); box-shadow: var(--shadow-lg); }
+    .sobre-img-float { position: absolute; bottom: -32px; right: -32px; width: 200px; height: 200px; border-radius: var(--radius); overflow: hidden; border: 4px solid var(--green-2); box-shadow: var(--shadow-lg); }
     .sobre-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--white); margin-bottom: 24px; }
     .sobre-text .lead { font-size: 1.12rem; font-weight: 500; color: var(--off-white); margin-bottom: 16px; line-height: 1.65; }
     .sobre-text p { color: var(--gray); margin-bottom: 16px; font-size: .975rem; }
     .badges { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 32px; }
-    .badge { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--black-3); border: 1px solid var(--border); border-radius: 8px; font-size: .85rem; font-weight: 500; color: var(--gray-light); transition: border-color .2s; }
+    .badge { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--green-3); border: 1px solid var(--border); border-radius: 8px; font-size: .85rem; font-weight: 500; color: var(--gray-light); transition: border-color .2s; }
     .badge:hover { border-color: var(--border-mid); }
     .badge svg { width: 18px; height: 18px; color: var(--gold); flex-shrink: 0; }
 
     /* CARTA */
-    .carta { background: var(--black-3); }
+    .carta { background: var(--green-3); }
     .carta-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
     .tab { padding: 10px 24px; border-radius: 50px; border: 1.5px solid var(--border-mid); background: transparent; font-size: .875rem; font-weight: 500; color: var(--gray); cursor: pointer; transition: all .2s; font-family: var(--font-sans); letter-spacing: .02em; }
     .tab:hover { border-color: var(--gold-dark); color: var(--gold-light); }
-    .tab.active { background: var(--gold); border-color: var(--gold); color: var(--black); font-weight: 600; }
+    .tab.active { background: var(--gold); border-color: var(--gold); color: var(--green); font-weight: 700; }
     .tab-panel { display: none; animation: fadeIn .3s ease; }
     .tab-panel.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .items-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .item-card { background: var(--black-2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform .25s, border-color .25s, box-shadow .25s; position: relative; }
+    .item-card { background: var(--green-2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform .25s, border-color .25s, box-shadow .25s; position: relative; }
     .item-card:hover { transform: translateY(-6px); border-color: var(--gold-dark); box-shadow: var(--shadow-lg); }
-    .item-card.featured { border-color: rgba(232,165,24,.35); }
+    .item-card.featured { border-color: rgba(239,223,160,.35); }
     .item-card.featured:hover { border-color: var(--gold); }
-    .item-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 4px 12px; background: var(--gold); color: var(--black); font-size: .7rem; font-weight: 700; border-radius: 50px; letter-spacing: .08em; text-transform: uppercase; }
+    .item-badge { position: absolute; top: 12px; left: 12px; z-index: 2; padding: 4px 12px; background: var(--gold); color: var(--green); font-size: .7rem; font-weight: 700; border-radius: 50px; letter-spacing: .08em; text-transform: uppercase; }
     .item-img { height: 200px; }
     .item-info { padding: 20px; }
     .item-info h3 { font-family: var(--font-serif); font-size: 1.1rem; color: var(--white); margin-bottom: 8px; }
@@ -118,16 +122,16 @@
     .price { font-weight: 700; font-size: .9rem; color: var(--gold); }
 
     /* GALERÍA */
-    .galeria { background: var(--black); padding-bottom: 0; }
+    .galeria { background: var(--green); padding-bottom: 0; }
     .gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 3px; }
     .gallery-item { overflow: hidden; }
-    .gallery-item img { transition: transform .5s, filter .5s; filter: brightness(.82); }
+    .gallery-item img { transition: transform .5s, filter .5s; filter: brightness(.8); }
     .gallery-item:hover img { transform: scale(1.06); filter: brightness(1); }
     .gallery-item.tall { grid-row: span 2; }
     .gallery-item.wide { grid-column: span 2; }
 
     /* HORARIOS */
-    .horarios { background: var(--black-2); }
+    .horarios { background: var(--green-2); }
     .horarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .horarios-info h2 { font-size: clamp(2rem, 3.5vw, 2.6rem); color: var(--white); margin-bottom: 32px; }
     .schedule { margin-bottom: 40px; }
@@ -144,27 +148,27 @@
     .loc-item a:hover { color: var(--gold); }
     .servicios h4 { font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
     .servicios-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .servicios-list span { padding: 6px 14px; background: var(--black-3); border: 1px solid var(--border); border-radius: 50px; font-size: .8rem; font-weight: 500; color: var(--gray-light); }
+    .servicios-list span { padding: 6px 14px; background: var(--green-3); border: 1px solid var(--border); border-radius: 50px; font-size: .8rem; font-weight: 500; color: var(--gray-light); }
     .mapa-wrap { height: 480px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border); }
 
     /* CONTACTO */
     .contacto { position: relative; padding: 120px 0; text-align: center; overflow: hidden; }
     .contacto-bg { position: absolute; inset: 0; }
-    .contacto-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,8,6,.93), rgba(26,21,15,.90)); }
+    .contacto-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,26,16,.94), rgba(22,35,22,.92)); }
     .contacto-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; padding: 0 24px; }
     .contacto-content h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); color: var(--white); margin-bottom: 20px; }
     .contacto-content p { font-size: 1.05rem; color: var(--gray); margin-bottom: 48px; line-height: 1.7; }
     .contacto-actions { display: flex; align-items: center; gap: 24px; justify-content: center; flex-wrap: wrap; }
     .social-links { display: flex; gap: 12px; }
-    .social-btn { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(232,165,24,.3); display: flex; align-items: center; justify-content: center; color: var(--gray-light); transition: all .2s; }
+    .social-btn { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(239,223,160,.3); display: flex; align-items: center; justify-content: center; color: var(--gray-light); transition: all .2s; }
     .social-btn svg { width: 20px; height: 20px; }
     .social-btn:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
     /* FOOTER */
-    .footer { background: var(--black); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer { background: var(--green); border-top: 1px solid var(--border); padding: 48px 0 24px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
-    .footer-name { font-family: var(--font-serif); font-size: 1.1rem; color: var(--white); margin-bottom: 4px; }
-    .footer-tagline { font-size: .8rem; color: var(--gold); }
+    .footer-name { font-family: var(--font-serif); font-size: 1.2rem; color: var(--gold); margin-bottom: 4px; }
+    .footer-tagline { font-size: .8rem; color: var(--gray); }
     .footer-links { display: flex; flex-direction: column; gap: 10px; }
     .footer-links a { font-size: .9rem; color: var(--gray); transition: color .2s; }
     .footer-links a:hover { color: var(--gold); }
@@ -180,7 +184,7 @@
     @media (max-width: 768px) {
       .section { padding: 64px 0; }
       .menu-toggle { display: flex; }
-      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(10,8,6,.98); border-top: 1px solid var(--border); padding: 20px 24px; gap: 4px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(15,26,16,.98); border-top: 1px solid var(--border); padding: 20px 24px; gap: 4px; }
       .nav-links.open { display: flex; }
       .nav-links a { padding: 12px 16px; font-size: 1rem; border-radius: 8px; }
       .hero-sub br { display: none; }
@@ -208,8 +212,8 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="#" class="brand">
-        <span class="brand-name">Budare<span class="brand-sub">venezuelan · food</span></span>
+      <a href="#" class="brand" aria-label="Budare Venezuelan Food">
+        <img src="Assets/Logo Budare.jpg" alt="Budare Venezuelan Food" />
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menú">
         <span></span><span></span><span></span>
@@ -227,7 +231,7 @@
   <!-- HERO -->
   <section class="hero" id="inicio">
     <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80&auto=format&fit=crop" alt="Budare Venezuelan Food" />
+      <img src="Assets/cachapa.jpg" alt="Cachapa Budare Venezuelan Food" />
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -257,10 +261,10 @@
       <div class="sobre-grid">
         <div class="sobre-imgs">
           <div class="sobre-img-main">
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&auto=format&fit=crop" alt="Cocina venezolana" />
+            <img src="Assets/exterior.jpg" alt="Exterior Budare Venezuelan Food Málaga" />
           </div>
           <div class="sobre-img-float">
-            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&q=80&auto=format&fit=crop" alt="Plato Budare" />
+            <img src="Assets/cachapa.jpg" alt="Cachapa Budare" />
           </div>
         </div>
         <div class="sobre-text">
@@ -310,18 +314,10 @@
 
         <div class="tab-panel active" id="tab-entrantes">
           <div class="items-grid">
-            <div class="item-card featured">
-              <span class="item-badge">Imprescindible</span>
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=400&q=80&auto=format&fit=crop" alt="Ceviche Tropical" /></div>
-              <div class="item-info">
-                <h3>Ceviche Tropical</h3>
-                <p>Pescado en salsa cítrica de maracuyá con mango, cebolla morada y cilantro, con crujiente de papadum</p>
-                <span class="price">16,00 €</span>
-              </div>
-            </div>
+
             <div class="item-card featured">
               <span class="item-badge">De la casa</span>
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80&auto=format&fit=crop" alt="Tequeños" /></div>
+              <div class="item-img"><img src="Assets/tequenos.jpg" alt="Tequeños" /></div>
               <div class="item-info">
                 <h3>Tequeños</h3>
                 <p>Rollitos fritos de harina de trigo. Relleno a elegir: Queso · Plátano y Queso · Guayaba y Queso</p>
@@ -329,11 +325,20 @@
               </div>
             </div>
             <div class="item-card">
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&q=80&auto=format&fit=crop" alt="Pinchos Venezolanos" /></div>
+              <div class="item-img"><img src="Assets/pinchos.jpg" alt="Pinchos Venezolanos" /></div>
               <div class="item-info">
                 <h3>Pinchos Venezolanos</h3>
                 <p>Brochetas marinadas a la parrilla. Proteína a elegir: Verduras · Ternera · Pollo · Mariscos</p>
                 <span class="price">desde 7,50 €</span>
+              </div>
+            </div>
+            <div class="item-card featured">
+              <span class="item-badge">Street food</span>
+              <div class="item-img"><img src="Assets/Perro Caliente.jpg" alt="Perro Caliente Venezolano" /></div>
+              <div class="item-info">
+                <h3>Perro Caliente</h3>
+                <p>El hot dog venezolano: salchicha, papas fritas, salsas, queso rallado y guasacaca. Un clásico de la calle</p>
+                <span class="price">9,50 €</span>
               </div>
             </div>
           </div>
@@ -343,28 +348,29 @@
           <div class="items-grid">
             <div class="item-card featured">
               <span class="item-badge">Más pedida</span>
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&q=80&auto=format&fit=crop" alt="Reina Pepiada" /></div>
+              <div class="item-img"><img src="Assets/arepa.jpg" alt="Arepa Pabellón" /></div>
               <div class="item-info">
-                <h3>Reina Pepiada</h3>
-                <p>Pollo desmechado, mayonesa, aguacate, cebolla finamente picada, cilantro y lima</p>
+                <h3>Arepa Pabellón</h3>
+                <p>Ternera desmechada, plátano dulce, queso latino y alubias negras. Dulce, salado y potente en un solo bocado. También disponible en versión vegetariana 🌱</p>
                 <span class="price">9,90 €</span>
               </div>
             </div>
             <div class="item-card featured">
-              <span class="item-badge">Nuestra creación</span>
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=400&q=80&auto=format&fit=crop" alt="Malagueña" /></div>
+              <span class="item-badge">Fusión</span>
+              <div class="item-img"><img src="Assets/arepa malaguena.jpg" alt="Arepa Malagueña" /></div>
               <div class="item-info">
-                <h3>Malagueña</h3>
-                <p>Gambas al pilpil, pulpo y salsa acevichada. Nuestra arepa homenaje a la Costa del Sol</p>
+                <h3>Arepa Malagueña</h3>
+                <p>Gambas al pilpil —ajo, aceite de oliva y mar— con pulpo. Cuando Venezuela se encuentra con Málaga 🔥🇻🇪🇪🇸 Solo en Budare.</p>
                 <span class="price">10,50 €</span>
               </div>
             </div>
-            <div class="item-card">
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80&auto=format&fit=crop" alt="Arepa Vegana" /></div>
+            <div class="item-card featured">
+              <span class="item-badge">✨ Aniversario</span>
+              <div class="item-img"><img src="Assets/arepa dorada.jpg" alt="Arepa de Oro" /></div>
               <div class="item-info">
-                <h3>Arepa Vegana</h3>
-                <p>Champiñones salteados con rúcula y aguacate. Elaboradas en harina de maíz asada o frita</p>
-                <span class="price">8,90 €</span>
+                <h3>Arepa de Oro</h3>
+                <p>Papel de oro 24K, sabores únicos y el orgullo de nuestro primer aniversario. Solo este mes · Solo en Budare · Disponible bajo pedido con un día de antelación 🗓️</p>
+                <span class="price">Bajo pedido</span>
               </div>
             </div>
           </div>
@@ -373,25 +379,25 @@
         <div class="tab-panel" id="tab-principales">
           <div class="items-grid">
             <div class="item-card featured">
-              <span class="item-badge">Plato nacional</span>
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80&auto=format&fit=crop" alt="Pabellón Criollo" /></div>
+              <span class="item-badge">De la casa</span>
+              <div class="item-img"><img src="Assets/Yuca.jpg" alt="Yuca con Guasacaca" /></div>
               <div class="item-info">
-                <h3>Pabellón Criollo</h3>
-                <p>Ternera desmechada, arroz blanco, alubias negras, huevo frito, plátano dulce, aguacate y queso latino</p>
-                <span class="price">16,00 €</span>
+                <h3>Yuca con Guasacaca</h3>
+                <p>Yuca sancochada con la mejor guasacaca de tu vida 🌿 En tu casa no la haces así.</p>
+                <span class="price">7,50 €</span>
               </div>
             </div>
             <div class="item-card featured">
-              <span class="item-badge">Para compartir</span>
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&q=80&auto=format&fit=crop" alt="Parrilla para Dos" /></div>
+              <span class="item-badge">Chino-venezolano</span>
+              <div class="item-img"><img src="Assets/Arroz Salvaje.jpg" alt="Arroz Salvaje" /></div>
               <div class="item-info">
-                <h3>Parrilla para Dos</h3>
-                <p>Entraña, churrasco de pollo, chorizo y morcilla con yuca, ensalada verde y guasacaca</p>
-                <span class="price">45,00 €</span>
+                <h3>Arroz Salvaje</h3>
+                <p>Arroz basmati salteado con vegetales, huevo y salsa de la casa al estilo chino-venezolano. A elegir: ternera, pollo, gambas o mixto. También en versión vegana 🌱</p>
+                <span class="price">13,50 €</span>
               </div>
             </div>
             <div class="item-card">
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1565299624157-20a0a32db8ee?w=400&q=80&auto=format&fit=crop" alt="Cachapa" /></div>
+              <div class="item-img"><img src="Assets/Cachapa.jpg" alt="Cachapa" /></div>
               <div class="item-info">
                 <h3>Cachapa</h3>
                 <p>Tortilla de maíz dulce con mantequilla, queso de mano y nata. Con extras de cerdo, pollo o ternera</p>
@@ -403,17 +409,9 @@
 
         <div class="tab-panel" id="tab-postres">
           <div class="items-grid">
-            <div class="item-card featured">
-              <span class="item-badge">Especialidad</span>
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&q=80&auto=format&fit=crop" alt="Quesillo" /></div>
-              <div class="item-info">
-                <h3>Quesillo</h3>
-                <p>El flan venezolano por excelencia, con textura suave y caramelo casero inconfundible</p>
-                <span class="price">5,00 €</span>
-              </div>
-            </div>
+
             <div class="item-card">
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80&auto=format&fit=crop" alt="Torta Tres Leches" /></div>
+              <div class="item-img"><img src="Assets/Tres Leches.jpg" alt="Torta Tres Leches" /></div>
               <div class="item-info">
                 <h3>Torta Tres Leches</h3>
                 <p>Bizcocho esponjoso empapado en tres tipos de leche, uno de los postres más icónicos de Venezuela</p>
@@ -421,11 +419,19 @@
               </div>
             </div>
             <div class="item-card">
-              <div class="item-img"><img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=400&q=80&auto=format&fit=crop" alt="Cócteles" /></div>
+              <div class="item-img"><img src="Assets/Mandocas.jpg" alt="Mandocas" /></div>
               <div class="item-info">
-                <h3>Cocada Budare</h3>
-                <p>Nuestro cóctel estrella. También: Guarapita, Caipirinha, Mojito, Pisco Sour, Aperol Spritz y más</p>
-                <span class="price">desde 8,90 €</span>
+                <h3>Mandocas</h3>
+                <p>Directamente desde Maracaibo 🇻🇪 Rosquillas fritas con ese toque dulcito irresistible y bastante queso como manda el antojo</p>
+                <span class="price">6,00 €</span>
+              </div>
+            </div>
+            <div class="item-card">
+              <div class="item-img"><img src="Assets/platanos.jpg" alt="Plátanos Glaseados" /></div>
+              <div class="item-info">
+                <h3>Plátanos Glaseados</h3>
+                <p>Plátano dulce caramelizado con queso rallado, nata y sésamo negro. Dulce y salado en perfecto equilibrio</p>
+                <span class="price">6,50 €</span>
               </div>
             </div>
           </div>
@@ -445,22 +451,22 @@
     </div>
     <div class="gallery-grid">
       <div class="gallery-item tall">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop" alt="Ambiente Budare" />
+        <img src="Assets/exterior.jpg" alt="Exterior Budare Venezuelan Food" />
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80&auto=format&fit=crop" alt="Platos venezolanos" />
+        <img src="Assets/interior.jpg" alt="Interior Budare" />
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format&fit=crop" alt="Comida venezolana" />
+        <img src="Assets/tequenos.jpg" alt="Platos venezolanos" />
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1560717845-968823efbee1?w=600&q=80&auto=format&fit=crop" alt="Plato estrella" />
+        <img src="Assets/ceviche.jpg" alt="Ceviche Tropical Budare" />
       </div>
       <div class="gallery-item wide">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80&auto=format&fit=crop" alt="Parrilla venezolana" />
+        <img src="Assets/parrilla.jpg" alt="Asado Negro y platos Budare" />
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1551248429-40975aa4de74?w=600&q=80&auto=format&fit=crop" alt="Cócteles" />
+        <img src="Assets/cocteles.jpg" alt="Cócteles Budare" />
       </div>
     </div>
   </section>
@@ -516,7 +522,7 @@
   <!-- CTA CONTACTO -->
   <section class="section contacto" id="contacto">
     <div class="contacto-bg">
-      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1600&q=80&auto=format&fit=crop" alt="Parrilla Budare" />
+      <img src="Assets/ambiente.jpg" alt="Ambiente Budare" />
       <div class="contacto-overlay"></div>
     </div>
     <div class="container">
